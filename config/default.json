@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://patrykromaniuk:patrykromaniuk@successitycluster.pvrbk.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jsonWebTokenSecret": "helloWorld"
+}
