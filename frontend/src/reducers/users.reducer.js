@@ -1,8 +1,38 @@
-const initialState = {};
+import {
+  GET_USERS,
+  USER_ERROR,
+  GET_USER_POSTS,
+  GET_POST_BY_USER_ID,
+  SEARCH_BY_USERNAME,
+} from "../constants/users.constants";
+
+const initialState = {
+  userProfile: null,
+  profilePosts: null,
+  errors: {},
+};
 
 const users = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case GET_USERS:
+      return {
+        ...state,
+        userProfile: payload,
+      };
+    case GET_USER_POSTS:
+    case GET_POST_BY_USER_ID:
+      return {
+        ...state,
+        profilePosts: payload,
+      };
+    case USER_ERROR:
+      return {
+        ...state,
+        userProfile: null,
+        profilePosts: null,
+        errors: payload,
+      };
     default:
       return state;
   }
