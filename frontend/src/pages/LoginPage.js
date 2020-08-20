@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { loginUser } from "../actions/auth.actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
 
 const LoginPage = ({ loginUser, error }) => {
   const [userData, setUserData] = useState({
@@ -51,17 +52,7 @@ const LoginPage = ({ loginUser, error }) => {
             </Link>
           </div>
           {error && (error !== null || error !== "" || error !== {}) && (
-            <div>
-              <p
-                className="font__bold font__p p__size"
-                style={{
-                  color: "#fb2f2f",
-                  textAlign: "center",
-                }}
-              >
-                Wrong e-mail or password
-              </p>
-            </div>
+            <ErrorMessage errorMessage="Wrong e-mail or password" />
           )}
 
           <div
