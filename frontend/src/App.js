@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Dashboard from "./pages/Dashboard";
+import ContactPage from "./pages/ContactPage";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./store";
@@ -9,7 +11,9 @@ import { Provider } from "react-redux";
 import setAuthenticationToken from "./middleware/setAuthenticationToken";
 import { userLoaded } from "./actions/auth.actions";
 import IsLoggedInRoute from "./routes/IsLoggedInRoute";
+import PrivateRoute from "./routes/PrivateRoute";
 import "./App.css";
+import ChangePassword from "./pages/ChangePassword";
 
 if (localStorage.getItem("token")) {
   setAuthenticationToken(localStorage.getItem("token"));
@@ -25,8 +29,15 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path="/" exact component={LandingPage} />
+          <Route path="/contact-us" exact component={ContactPage} />
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
+          <PrivateRoute
+            path="/change-password"
+            exact
+            component={ChangePassword}
+          />
+          <PrivateRoute path="/dashboard" exact component={Dashboard} />
         </Switch>
       </Provider>
     </Router>
