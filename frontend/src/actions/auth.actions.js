@@ -4,6 +4,9 @@ import {
   AUTH_ERROR,
   USER_IS_LOADED,
   LOG_OUT,
+  CHECK_PASSWORDS,
+  CHANGE_PASSWORD,
+  CHANGE_PASSWORD_FAIL,
 } from "../constants/auth.constants";
 import axios from "axios";
 import setAuthenticationToken from "../middleware/setAuthenticationToken";
@@ -79,6 +82,57 @@ export const loginUser = (userData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: AUTH_FORM_FAIL,
+      payload: error,
+    });
+  }
+};
+
+export const checkPasswords = (passwordToCheck) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const body = JSON.stringify({ passwordToCheck });
+    const res = await axios.put(
+      "http://localhost:5000/api/users/check_acutal_password",
+      body,
+      config
+    );
+    dispatch({
+      type: CHECK_PASSWORDS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CHANGE_PASSWORD_FAIL,
+      payload: error,
+    });
+  }
+};
+
+export const changePassword = (newPassword) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const body = JSON.stringify({ newPassword });
+    const res = await axios.put(
+      "http://localhost:5000/api/users/change_user_password",
+      body,
+      config
+    );
+    dispatch({
+      type: CHANGE_PASSWORD,
+      payload: res.data,
+    });
+    dispatch(userLoaded());
+  } catch (error) {
+    dispatch({
+      type: CHANGE_PASSWORD_FAIL,
       payload: error,
     });
   }
