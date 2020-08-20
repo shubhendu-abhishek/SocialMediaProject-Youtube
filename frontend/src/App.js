@@ -3,13 +3,13 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 import setAuthenticationToken from "./middleware/setAuthenticationToken";
 import { userLoaded } from "./actions/auth.actions";
 import IsLoggedInRoute from "./routes/IsLoggedInRoute";
+import "./App.css";
 
 if (localStorage.getItem("token")) {
   setAuthenticationToken(localStorage.getItem("token"));
@@ -28,7 +28,6 @@ const App = () => {
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
         </Switch>
-        <Footer />
       </Provider>
     </Router>
   );
