@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../actions/auth.actions";
 import { connect } from "react-redux";
+import ErrorMessage from "../components/ErrorMessage";
 
 const RegisterPage = ({ registerUser, error }) => {
   const [hasPasswordShowed, setShowPassword] = useState(false);
@@ -94,17 +95,7 @@ const RegisterPage = ({ registerUser, error }) => {
           </div>
 
           {error && (error !== null || error !== "" || error !== {}) && (
-            <div>
-              <p
-                className="font__bold font__p p__size"
-                style={{
-                  color: "#fb2f2f",
-                  textAlign: "center",
-                }}
-              >
-                Something went wrong...
-              </p>
-            </div>
+            <ErrorMessage errorMessage="Something went wrong..." />
           )}
 
           <div
