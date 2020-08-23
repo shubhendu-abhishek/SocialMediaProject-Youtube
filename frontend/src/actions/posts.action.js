@@ -199,9 +199,9 @@ export const addLikeToPost = (
     if (isOldest) {
       dispatch(getPosts());
     } else if (isMostRecent) {
-      dispatch(getLatestPosts());
+      dispatch(getMostRecentPosts());
     } else if (isMostCommented) {
-      dispatch(getMostCommented());
+      dispatch(getMostCommentedPosts());
     } else if (isMostLiked) {
       dispatch(getMostLikedPosts());
     }
