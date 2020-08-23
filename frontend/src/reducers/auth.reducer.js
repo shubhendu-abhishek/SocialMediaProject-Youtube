@@ -4,6 +4,8 @@ import {
   AUTH_ERROR,
   USER_IS_LOADED,
   LOG_OUT,
+  CHANGE_PASSWORD_FAIL,
+  CHECK_PASSWORDS,
 } from "../constants/auth.constants";
 
 const initialState = {
@@ -31,6 +33,13 @@ const auth = (state = initialState, action) => {
         isLoading: false,
         errors: {},
       };
+    case CHECK_PASSWORDS:
+      return {
+        ...state,
+        ...payload,
+        isAllowedToChangePassword: true,
+        errors: {},
+      };
     case AUTH_FORM_FAIL:
     case AUTH_ERROR:
     case LOG_OUT:
@@ -45,6 +54,11 @@ const auth = (state = initialState, action) => {
         isAllowedToChangePassword: false,
         isPasswordChanged: false,
         isLoading: false,
+      };
+    case CHANGE_PASSWORD_FAIL:
+      return {
+        ...state,
+        errors: payload,
       };
     case USER_IS_LOADED:
       localStorage.getItem("token");
