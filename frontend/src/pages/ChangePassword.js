@@ -5,10 +5,11 @@ import ErrorMessage from "../components/ErrorMessage";
 import PasswordChangeMessage from "../components/PasswordChangeMessage";
 
 const ChangePassword = ({
-  auth: { error, isAllowedToChangePassword },
+  auth: { errors, isAllowedToChangePassword },
   checkPasswords,
   changePassword,
 }) => {
+  let [isSubmitted, setIsSubmitted] = useState(false);
   let [areNotPasswordsFullfiled, setAreNotPasswordsFullfiled] = useState(false);
   let [arePasswordsWrong, setArePasswordsWrong] = useState(false);
   let [formData, setFormData] = useState({
@@ -78,7 +79,7 @@ const ChangePassword = ({
             <ErrorMessage errorMessage="Passwords are wrong" />
           )}
 
-          {error === false && (error !== {} || error !== null) && (
+          {errors === false && (errors !== {} || errors !== null) && (
             <ErrorMessage errorMessage="Something went wrong..." />
           )}
           <div className="password-page-button" onClick={(e) => submitData(e)}>
@@ -116,16 +117,13 @@ const ChangePassword = ({
           </div>
         </form>
       )}
+      {isAllowedToChangePassword && errors && isSubmitted && (
+        <PasswordChangeMessage message="Password hasn't changed, something went wrong..." />
+      )}
 
-      {isAllowedToChangePassword &&
-        (error || error !== null || error !== {}) && (
-          <PasswordChangeMessage message="Password hasn't changed, something went wrong..." />
-        )}
-
-      {isAllowedToChangePassword &&
-        (!error || error === null || error === {}) && (
-          <PasswordChangeMessage message="Password has changed" />
-        )}
+      {isAllowedToChangePassword && !errors && isSubmitted && (
+        <PasswordChangeMessage message="Password has changed" />
+      )}
     </div>
   );
 };
