@@ -6,6 +6,8 @@ import {
   LOG_OUT,
   CHANGE_PASSWORD_FAIL,
   CHECK_PASSWORDS,
+  CHANGE_PROFILE,
+  CHANGE_USER_DATA_FAILED,
 } from "../constants/auth.constants";
 
 const initialState = {
@@ -24,6 +26,16 @@ const auth = (state = initialState, action) => {
   switch (type) {
     case AUTH_FORM_SUCCESS:
       localStorage.setItem("token", payload.token);
+      return {
+        ...state,
+        ...payload,
+        isLoggedIn: true,
+        isAllowedToChangePassword: false,
+        isPasswordChanged: false,
+        isLoading: false,
+        errors: {},
+      };
+    case CHANGE_PROFILE:
       return {
         ...state,
         ...payload,
@@ -56,6 +68,7 @@ const auth = (state = initialState, action) => {
         isLoading: false,
       };
     case CHANGE_PASSWORD_FAIL:
+    case CHANGE_USER_DATA_FAILED:
       return {
         ...state,
         errors: payload,
