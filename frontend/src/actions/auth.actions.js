@@ -7,6 +7,8 @@ import {
   CHECK_PASSWORDS,
   CHANGE_PASSWORD,
   CHANGE_PASSWORD_FAIL,
+  CHANGE_PROFILE,
+  CHANGE_USER_DATA_FAILED,
 } from "../constants/auth.constants";
 import axios from "axios";
 import setAuthenticationToken from "../middleware/setAuthenticationToken";
@@ -133,6 +135,34 @@ export const changePassword = (newPassword) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: CHANGE_PASSWORD_FAIL,
+      payload: error,
+    });
+  }
+};
+
+export const changeUserData = (changeUserData, userDataToChange) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const body = JSON.stringify({ changeUserData });
+    const response = await axios.put(
+      `http://localhost:5000/api/users/change_user_data/${userDataToChange}`,
+      body,
+      config
+    );
+    dispatch({
+      type: CHANGE_PROFILE,
+      payload: response.data,
+    });
+    alert("Data has changed");
+  } catch (error) {
+    dispatch({
+      type: CHANGE_USER_DATA_FAILED,
       payload: error,
     });
   }
