@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
+import ChangeProfile from "./pages/ChangeProfile";
 import AddPost from "./pages/AddPost";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -40,6 +41,11 @@ const App = () => {
           />
           <PrivateRoute path="/dashboard" exact component={Dashboard} />
           <PrivateRoute path="/add-post" exact component={AddPost} />
+          <PrivateRoute
+            path="/change-profile"
+            exact
+            component={ChangeProfile}
+          />
         </Switch>
       </Provider>
     </Router>
