@@ -6,6 +6,7 @@ import ErrorMessage from "../components/ErrorMessage";
 const ChangeProfile = ({ changeUserData, posts: { errors } }) => {
   let [dataType, setDataType] = useState("");
   let [newUserData, setNewUserData] = useState("");
+  let [isTextError, setIsTextError] = useState(false);
 
   const onChange = (dataToChange) => setDataType(dataToChange);
 
@@ -14,7 +15,10 @@ const ChangeProfile = ({ changeUserData, posts: { errors } }) => {
   };
 
   const sendData = () => {
+    if (newUserData === "" || newUserData === null) return setIsTextError(true);
     changeUserData(newUserData, dataType);
+    setNewUserData("");
+    setDataType("");
   };
 
   return (
@@ -44,6 +48,11 @@ const ChangeProfile = ({ changeUserData, posts: { errors } }) => {
             placeholder="Type something..."
             className="change-profile-input"
           />
+
+          {errors && isTextError && (
+            <ErrorMessage errorMessage="Something went wrong..." />
+          )}
+
           <div className="change-profile-buttons-wrapper">
             <div className="change-profile-btn" onClick={() => sendData()}>
               Submit
