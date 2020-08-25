@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
 import ChangeProfile from "./pages/ChangeProfile";
+import Account from "./pages/Account";
 import AddPost from "./pages/AddPost";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -46,6 +47,7 @@ const App = () => {
             exact
             component={ChangeProfile}
           />
+          <PrivateRoute path="/account" exact component={Account} />
         </Switch>
       </Provider>
     </Router>
