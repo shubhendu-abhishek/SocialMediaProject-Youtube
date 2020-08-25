@@ -43,7 +43,7 @@ const auth = (state = initialState, action) => {
         isAllowedToChangePassword: false,
         isPasswordChanged: false,
         isLoading: false,
-        errors: {},
+        errors: null,
       };
     case CHECK_PASSWORDS:
       return {
