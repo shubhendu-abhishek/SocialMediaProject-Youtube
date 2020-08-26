@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getUserPosts } from "../actions/auth.actions";
+import { getUserPosts } from "../actions/users.action";
 import UserPostsWrapper from "./UserPosts/UserPostsWrapper";
 
 const Account = ({
