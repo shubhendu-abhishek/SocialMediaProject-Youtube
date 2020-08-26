@@ -1,8 +1,11 @@
 import axios from "axios";
 import {
-  GET_POST_BY_USER_ID,
   GET_USER_POSTS,
   GET_USERS,
+  USER_ERROR,
+  GET_POST_BY_USER_ID,
+  GET_USER_BY_ID,
+  SEARCH_BY_USERNAME,
 } from "../constants/users.constants";
 
 export const getUserPostsById = (user_id) => async (dispatch) => {
