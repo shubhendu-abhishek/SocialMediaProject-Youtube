@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
 import ChangeProfile from "./pages/ChangeProfile";
+import Users from "./pages/Users";
 import Account from "./pages/Account";
 import AddPost from "./pages/AddPost";
 import Navbar from "./components/Navbar";
@@ -33,6 +34,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/contact-us" exact component={ContactPage} />
+          <Route path="/users" exact component={Users} />
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
           <PrivateRoute
