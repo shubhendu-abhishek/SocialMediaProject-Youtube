@@ -9,6 +9,7 @@ import {
   CHANGE_PROFILE,
   CHANGE_USER_DATA_FAILED,
   GET_USERS,
+  SEARCH_BY_USERNAME,
 } from "../constants/auth.constants";
 
 const initialState = {
@@ -55,6 +56,7 @@ const auth = (state = initialState, action) => {
       };
 
     case GET_USERS:
+    case SEARCH_BY_USERNAME:
       return {
         ...state,
         users: [...payload],
