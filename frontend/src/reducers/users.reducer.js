@@ -3,7 +3,6 @@ import {
   USER_ERROR,
   GET_USER_POSTS,
   GET_POST_BY_USER_ID,
-  SEARCH_BY_USERNAME,
 } from "../constants/users.constants";
 
 const initialState = {
@@ -15,11 +14,6 @@ const initialState = {
 const users = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case GET_USERS:
-      return {
-        ...state,
-        userProfile: payload,
-      };
     case GET_USER_POSTS:
     case GET_POST_BY_USER_ID:
       return {
