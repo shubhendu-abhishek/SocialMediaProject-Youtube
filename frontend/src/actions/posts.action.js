@@ -20,6 +20,7 @@ import {
   REMOVE_COMMENT,
 } from "../constants/posts.constants";
 import axios from "axios";
+import { getUserPosts } from "./users.action";
 
 export const clearPost = () => async (dispatch) => {
   try {
@@ -233,6 +234,7 @@ export const removePost = (post_id) => async (dispatch) => {
       `http://localhost:5000/api/posts/delete_post/${post_id}`
     );
     dispatch({ type: REMOVE_POST, payload: res.data });
+    dispatch(getUserPosts());
   } catch (error) {
     dispatch({
       type: POST_ERROR,
