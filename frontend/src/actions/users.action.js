@@ -5,8 +5,8 @@ import {
   USER_ERROR,
   GET_POST_BY_USER_ID,
   GET_USER_BY_ID,
-  SEARCH_BY_USERNAME,
 } from "../constants/users.constants";
+import { SEARCH_BY_USERNAME } from "../constants/auth.constants";
 
 export const getUserPostsById = (user_id) => async (dispatch) => {
   try {
