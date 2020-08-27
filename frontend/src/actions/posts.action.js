@@ -1,7 +1,6 @@
 import {
   MAKE_POST,
   POST_ERROR,
-  GET_USER_POSTS,
   REMOVE_POST,
   GET_POSTS,
   GET_POST,
@@ -12,12 +11,11 @@ import {
   MOST_COMMENTED,
   ADD_LIKE,
   THE_MOST_RECENT_POSTS,
-  REMOVE_LIKE,
   ADD_COMMENT,
-  GET_POST_BY_USER_ID,
   LIKE_COMMENT,
   REMOVE_LIKE_FROM_COMMENT,
   REMOVE_COMMENT,
+  REMOVE_LIKE,
 } from "../constants/posts.constants";
 import axios from "axios";
 import { getUserPosts } from "./users.action";
@@ -225,6 +223,37 @@ export const addLikeToComment = (post_id, comment_id) => async (dispatch) => {
       type: POST_ERROR,
       payload: error,
     });
+  }
+};
+
+export const removeLikeFromTopicPost = (
+  post_id,
+  like_id,
+  isOldest,
+  isMostRecent,
+  isMostCommented,
+  isMostLiked
+) => async (dispatch) => {
+  try {
+    const res = await axios.delete(
+      `http://localhost:5000/api/posts/likes/${post_id}/${like_id}`
+    );
+    dispatch({
+      type: REMOVE_LIKE,
+      payload: res.data,
+    });
+    if (isOldest) {
+      dispatch(getPosts());
+    } else if (isMostRecent) {
+      dispatch(getMostRecentPosts());
+    } else if (isMostCommented) {
+      dispatch(getMostCommentedPosts());
+    } else if (isMostLiked) {
+      dispatch(getMostLikedPosts());
+    }
+  } catch (error) {
+    console.log(error.message);
+    dispatch({ type: POST_ERROR });
   }
 };
 
