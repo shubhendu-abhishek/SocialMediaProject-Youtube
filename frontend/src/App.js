@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
 import ChangeProfile from "./pages/ChangeProfile";
 import UserProfile from "./pages/UserProfile.js";
+import Topics from "./pages/Topics.js";
 import Users from "./pages/Users";
 import Account from "./pages/Account";
 import AddPost from "./pages/AddPost";
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/" exact component={LandingPage} />
           <Route path="/contact-us" exact component={ContactPage} />
           <Route path="/users" exact component={Users} />
+          <Route path="/topics" exact component={Topics} />
           <Route path="/users/user/:user_id" exact component={UserProfile} />
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
