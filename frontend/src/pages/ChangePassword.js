@@ -110,6 +110,7 @@ const ChangePassword = ({
               }}
               onClick={() => {
                 changePassword(newPassword);
+                setIsSubmitted(true);
               }}
             >
               Submit
