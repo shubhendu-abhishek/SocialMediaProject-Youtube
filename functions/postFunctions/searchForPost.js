@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     if (searchInput === "" || searchInput === null) {
       res.status(401).json(posts);
     } else {
-      let findPostBySearchInput = posts.find(
+      const findPostBySearchInput = posts.filter(
         (post) =>
           post.textOfThePost.toString().toLowerCase().split(" ").join("") ===
           searchInput.toString().toLowerCase().split(" ").join("")
