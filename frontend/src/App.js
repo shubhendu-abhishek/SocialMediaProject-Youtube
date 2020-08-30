@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import ContactPage from "./pages/ContactPage";
 import ChangeProfile from "./pages/ChangeProfile";
 import UserProfile from "./pages/UserProfile.js";
+import TopicPage from "./pages/TopicPage";
 import Topics from "./pages/Topics.js";
 import Users from "./pages/Users";
 import Account from "./pages/Account";
@@ -15,7 +16,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 import setAuthenticationToken from "./middleware/setAuthenticationToken";
-import { userLoaded } from "./actions/auth.actions";
+import { userLoaded } from "./actions/auth.actions/userLoaded";
 import IsLoggedInRoute from "./routes/IsLoggedInRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import "./App.css";
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/users" exact component={Users} />
           <Route path="/topics" exact component={Topics} />
           <Route path="/users/user/:user_id" exact component={UserProfile} />
+          <Route path="/topics/topic/:topic_id" exact component={TopicPage} />
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
           <PrivateRoute
