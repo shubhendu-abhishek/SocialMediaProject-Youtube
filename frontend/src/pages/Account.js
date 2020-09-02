@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getUserPosts } from "../actions/users.action";
+import { getUserPosts } from "../actions/users.actions/getUserPosts";
 import UserPostsWrapper from "./UserPosts/UserPostsWrapper";
+import AccountPageSection from "../components/AccountPage/AccountPageSection";
 
 const Account = ({
   getUserPosts,
@@ -16,36 +17,12 @@ const Account = ({
       <div className="data">
         <img src={avatar} alt="" />
 
-        <div className="data-items">
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Name:
-            </p>{" "}
-            {name}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Last Name:
-            </p>{" "}
-            {lastName}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Username:
-            </p>{" "}
-            {userName}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              E-mail:
-            </p>
-            {"  "}
-            {email}
-          </div>
-        </div>
+        <AccountPageSection
+          name={name}
+          lastName={lastName}
+          email={email}
+          userName={userName}
+        />
       </div>
 
       <div className="user-posts">
