@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getUserById, getUserPostsById } from "../actions/users.action";
+import { getUserById } from "../actions/users.actions/getUserById";
+import { getUserPostsById } from "../actions/users.actions/getUserPostsById";
 import Spinner from "../Spinner";
 import UserPostsWrapper from "./UserPosts/UserPostsWrapper";
+import UserProfileData from "../components/userProfile/UserProfileData";
 
 const UserProfile = ({
   users,
@@ -28,35 +30,7 @@ const UserProfile = ({
       <div className="data">
         <img src={userProfile.avatar} alt="" />
 
-        <div className="data-items">
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Name:
-            </p>
-            {userProfile.name}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Last Name:
-            </p>{" "}
-            {userProfile.last_name}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              Username:
-            </p>{" "}
-            {userProfile.username}
-          </div>
-
-          <div className="font__p data-item">
-            <p style={{ marginRight: ".4em" }} className="font__bold">
-              E-mail:
-            </p>{" "}
-            {userProfile.email}
-          </div>
-        </div>
+        <UserProfileData userProfile={userProfile} />
         <div className="user-posts">
           <header className="user-posts-header-wrapper app_color_background">
             {post !== null || post !== [] ? (
