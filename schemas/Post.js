@@ -47,6 +47,9 @@ let PostSchema = mongoose.Schema({
       avatar: {
         type: String,
       },
+      textOfTheComment: {
+        type: String,
+      },
       date: {
         type: Date,
         default: Date.now(),
