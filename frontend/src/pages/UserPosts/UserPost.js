@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { removePost } from "../../actions/posts.action";
+import { removePost } from "../../actions/posts.actions/posts.actions/removePost";
 import Spinner from "../../Spinner";
 import Moment from "react-moment";
 
 const UserPost = ({ post, removePost, auth }) => {
   return post === null || !post ? (
-    <Spinner />
+    <div className="all-page-wrapper flex__center">
+      <Spinner />
+    </div>
   ) : (
     <div className="user-post">
       <div className="user-post-date">
