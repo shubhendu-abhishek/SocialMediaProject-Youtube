@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { checkPasswords, changePassword } from "../actions/auth.actions";
+import { checkPasswords } from "../actions/auth.actions/checkPasswords";
+import { changePassword } from "../actions/auth.actions/changePassword";
 import { connect } from "react-redux";
 import ErrorMessage from "../components/ErrorMessage";
 import PasswordChangeMessage from "../components/PasswordChangeMessage";
