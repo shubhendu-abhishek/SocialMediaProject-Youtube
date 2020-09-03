@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  getPosts,
-  getMostRecentPosts,
-  getMostCommentedPosts,
-  getMostLikedPosts,
-  searchTopics,
-} from "../actions/posts.action";
+import { getPosts } from "../actions/posts.actions/posts.actions/getPosts";
+import { getMostRecentPosts } from "../actions/posts.actions/posts.actions/getMostRecentPosts";
+import { getMostCommentedPosts } from "../actions/posts.actions/posts.actions/getMostCommentedPosts";
+import { getMostLikedPosts } from "../actions/posts.actions/posts.actions/getMostLikedPosts";
+import { searchTopics } from "../actions/posts.actions/searchTopics";
 import { connect } from "react-redux";
 import TopicPostsWrapper from "./TopicPosts/TopicPostsWrapper";
 
