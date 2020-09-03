@@ -2,10 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import {
-  addLikeToPost,
-  removeLikeFromTopicPost,
-} from "../../actions/posts.action";
+import { addLikeToPost } from "../../actions/posts.actions/likes.actions/addLikeToPost";
+import { removeLikeFromTopicPost } from "../../actions/posts.actions/likes.actions/removeLikeFromTopicPost";
 
 const TopicPost = ({
   isTheOldest,
