@@ -3,13 +3,14 @@ const Post = require("../../schemas/Post");
 const User = require("../../schemas/User");
 
 module.exports = async (req, res) => {
-  const { textOfTheComment } = req.body;
-  const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
   try {
     let post = await Post.findById(req.params.post_id);
     let user = await User.findById(req.user.id).select("-password");
+
+    const { textOfTheComment } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
 
     if (!user) return res.status(404).json("User not found");
 
@@ -20,7 +21,6 @@ module.exports = async (req, res) => {
       name: user.name,
       avatar: user.avatar,
     };
-
     post.comments.unshift(newComment);
 
     await post.save();
